@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <title>My Calculator</title>
+</head>
+
+<body>
+  <div id="container">
+    <h1>My Calculator</h1>
+    <form id="myForm">
+      <input type="text" id="displayScreen" maxlength="10" placeholder="0" readonly>
+      <!-- FIRST ROW OF BUTTONS -->
+      <p>
+        <input type="button" class="button" name="btn1" id="btn1" value="7" onclick="display(btn1.value)">
+        <input type="button" class="button" name="btn2" id="btn2" value="8" onclick="display(btn2.value)">
+        <input type="button" class="button" name="btn3" id="btn3" value="9" onclick="display(btn3.value)">
+        <input type="button" class="button" name="btn4" id="btn4" value="/" onclick="display(btn4.value)">
+      </p>
+      <!-- SECOND ROW OF BUTTONS -->
+      <p>
+        <input type="button" class="button" name="btn5" id="btn5" value="4" onclick="display(btn5.value)">
+        <input type="button" class="button" name="btn6" id="btn6" value="5" onclick="display(btn6.value)">
+        <input type="button" class="button" name="btn7" id="btn7" value="6" onclick="display(btn7.value)">
+        <input type="button" class="button" name="btn8" id="btn8" value="x" onclick="display('*')">
+      </p>
+      <!-- THIRD ROW OF BUTTONS -->
+      <p>
+        <input type="button" class="button" name="btn9" id="btn9" value="1" onclick="display(btn9.value)">
+        <input type="button" class="button" name="btn10" id="btn10" value="2" onclick="display(btn10.value)">
+        <input type="button" class="button" name="btn11" id="btn11" value="3" onclick="display(btn11.value)">
+        <input type="button" class="button" name="btn12" id="btn12" value="-" onclick="display(btn12.value)">
+      </p>
+      <!-- FOURTH ROW OF BUTTONS -->
+      <p>
+        <input type="button" class="button" name="btn13" id="btn13" value="0" onclick="display(btn13.value)">
+        <input type="button" class="button" name="btn14" id="btn14" value="." onclick="display(btn14.value)">
+        <input type="button" class="button" name="btn15" id="btn15" value="+" onclick="display(btn15.value)">
+        <input type="button" class="button" name="btn16" id="btn16" value="=" onclick="calculate()">
+      </p>
+      <!-- LAST ROW OF BUTTONS -->
+      <p>
+        <input type="button" class="button" name="btn17" id="btn17" value="CE" onclick="clearScreen()">
+        <input type="button" class="button" name="btn18" id="btn18" value="BS" onclick="backSpace()">
+        <!-- LETS ADD TWO BUTTONS -->
+      </p>
+    </form>
+  </div>
+  <script>
+    var displayScreen = document.getElementById('displayScreen');
+
+    // DISPLAYS THE VALUE ON THE SCREEN
+    function display(value) {
+      console.log('displayScreen:', value);
+      return displayScreen.value += value;
+    }
+
+    // DOES OUR CALCULATIONS
+    function calculate() {
+      console.log('Calculating:', displayScreen.value);
+
+      try {
+        return displayScreen.value = eval(displayScreen.value)
+      }
+      catch (e) {
+        return display('Error')
+      }
+    }
+
+    // CLEAR THE SCREEN
+    function clearScreen() {
+      console.clear(); // CLEAR CONSOLE
+      return displayScreen.value = ''; // RESET DISPLAY SCREEN TO BLANK
+    }
+
+    // BACKSPACE
+    function backSpace() {
+      return displayScreen.value = displayScreen.value.slice(0, displayScreen.value.length - 1)
+    }
+  </script>
+</body>
+
+</html>
